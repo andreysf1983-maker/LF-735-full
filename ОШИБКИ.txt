@@ -1,0 +1,252 @@
+Во первых, при запуске worldserver долго висит Initialize data stores... и не видно что он там инициализирует..
+
+Во вторых вот эту ошибку исправь, постоянно выдает, твои правки не помогают:
+LEGIONFORGE rev.1 2026-10-12 10:14:38 (Legion 7.3.5.26124, Win64, Release, Static) (worldserver-daemon)
+<Ctrl-C> to stop.
+
+ __                                         ____
+/\ \                     __                /\  _`\
+\ \ \         __     __ /\_\    ___     ___\ \ \L\_\___   _ __    __      __
+ \ \ \  __  /'__`\ /'_ `\/\ \  / __`\ /' _ `\ \  _\/ __`\/\`'__\/'_ `\  /'__`\
+  \ \ \L\ \/\  __//\ \L\ \ \ \/\ \L\ \/\ \/\ \ \ \/\ \L\ \ \ \//\ \L\ \/\  __/
+   \ \____/\ \____\ \____ \ \_\ \____/\ \_\ \_\ \_\ \____/\ \_\\ \____ \ \____\
+    \/___/  \/____/\/___L\ \/_/\/___/  \/_/\/_/\/_/\/___/  \/_/ \/___L\ \/____/
+                     /\____/                                      /\____/
+                     \_/__/                                       \_/__/
+                 L E G I O N   7 . 3 . 5   ( b u i l d   2 6 1 2 4 )
+                                                     https://legionforge.ru
+
+Using configuration file worldserver.conf.
+Using SSL version: OpenSSL 3.6.5 29 Sep 2026 (library: OpenSSL 3.5.9 29 Sep 2026)
+Using Boost version: 1.86.0
+Updating Auth database...
+>> Auth database is up-to-date! Containing 0 new and 0 archived updates.
+Updating Character database...
+>> Character database is up-to-date! Containing 0 new and 0 archived updates.
+Updating World database...
+>> World database is up-to-date! Containing 0 new and 0 archived updates.
+Updating Hotfixes database...
+>> Hotfixes database is up-to-date! Containing 0 new and 0 archived updates.
+Realm running as realm ID 1
+Using World DB: ADB 735.00
+Using enUS DBC Locale
+Will clear `logs` table of entries older than 1209600 seconds every 10 minutes.
+Using DataDir ./data/
+WORLD: MMap data directory is: ./data/mmaps
+VMap support included. LineOfSight: 1, getHeight: 1, indoorCheck: 1
+VMap data directory is: ./data/vmaps
+Initialize PlayerDump...
+>> Initialized 378 PlayerDump ColumnDefinitions in 58 ms.
+Loading LegionForge strings...
+>> Loaded 1066 trinity strings in 72 ms
+Initialize data stores...
+>> Initialized 240 DB2 data stores in 127614 ms
+>> Loaded 187 hotfix records in 20 ms
+>> Loading Cinematic Camera files
+>> Loaded 34 cinematic waypoint sets in 128 ms
+>> Initialized 27 GameTables in 496 ms
+Loading playerbot accounts...
+>> LoadPlayerBot Find 0 characters!
+>> Loaded 50 Player bot account base info in 34 ms
+Loading SpellInfo store...
+
+D:\legionforge\core\src\server\game\Spells\SpellMgr.cpp:2234 in SpellMgr::LoadSpellInfoStore ASSERTION FAILED:
+  effect->Effect < TOTAL_SPELL_EFFECTS TOTAL_SPELL_EFFECTS must be at least 262
+  breadcrumb: none
+Для продолжения нажмите любую клавишу . . .
+
+
+
+В третьих
+Я закинул в папку legionforge\setup_tmp Win64OpenSSL-3_5_9.exe он не устанавливает а ищет в интернете, пытается скачать и не может....
+
+И вот ещё какие то придупреждения... нужно исправить:
+
+ =========================================================
+  LEGIONFORGE 7.3.5 - запуск сервера
+ =========================================================
+
+ [*] Проверка MySQL...
+ [OK] MySQL доступен: D:\legionforge\tools\mysql\server\bin\mysql.exe
+
+ [*] Проверка схем world и hotfixes...
+[OK] Database 'world' is ready: 225 tables; required data rows verified.
+[OK] Database 'hotfixes' is ready: 330 tables; required data rows verified.
+  [OK] server\logs и server\Crashes готовы (перенесено журналов: 0, отчётов о падениях: 0, удалено старых: 0)
+ [*] Проверка DB2 (dbc) на соответствие ядру...
+  == LEGIONFORGE: проверка DB2 (dbc) на соответствие ядру ==
+  Каталог: D:\legionforge\server\data\dbc\enUS
+  Ожидается таблиц ядром: 242; константы: BATTLE_PET_SPECIES_MAX_ID=5004, MAX_DIFFICULTY=148, TaxiMaskSize=286
+  Проверено файлов: 242; отсутствует: 0
+  [OK] dbc соответствует ядру: сигнатуры WDC1, LayoutHash совпадают, лимиты не превышены.
+ [OK] DB2 соответствуют ядру.
+
+ [*] Проверка библиотек worldserver и bnetserver...
+  == LEGIONFORGE: проверка библиотек сервера ==
+  Папка server: D:\legionforge\server
+  Все библиотеки уже на месте или есть в Windows.
+  == LEGIONFORGE: диагностика OpenSSL / OPENSSL_Applink ==
+  Каталог сервера: D:\legionforge\server
+  --- bnetserver.exe ---
+  [OK] экспорт OPENSSL_Applink присутствует - фикс скомпилирован в exe.
+  --- worldserver.exe ---
+  [OK] экспорт OPENSSL_Applink присутствует - фикс скомпилирован в exe.
+  --- DLL OpenSSL рядом с сервером ---
+  [OK] libcrypto-3-x64.dll  (версия 3.5.9, 6 996 480 байт)
+  [OK] libssl-3-x64.dll  (версия 3.5.9, 1 294 336 байт)
+  --- Поиск посторонних OpenSSL DLL в PATH ---
+  [!] PATH содержит libcrypto-4-x64.dll  ->  C:\Program Files\FireDaemon OpenSSL 4\bin\
+  [!] PATH содержит libssl-4-x64.dll  ->  C:\Program Files\FireDaemon OpenSSL 4\bin\
+  [!] PATH содержит libcrypto-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-3-x64.dll  ->  C:\Windows\system32
+  Windows грузит DLL из каталога exe ПЕРЕД PATH, поэтому локальные
+  файлы обычно побеждают. Но если локальных DLL нет (статическая
+  сборка), загрузится посторонняя - от Git, PostgreSQL или Steam.
+  --- Переменная OPENSSL_CONF ---
+  [!] OPENSSL_CONF не задана. OpenSSL ищет конфиг по встроенному пути сборки;
+  если тот путь не существует, первая же запись в stderr из DLL
+  приводит к фатальному uplink-выходу.
+  Временное смягчение БЕЗ пересборки (не заменяет фикс в Main.cpp):
+  set "OPENSSL_CONF=D:\legionforge\tools\openssl.cnf"
+  play.bat подставляет этот путь автоматически, если OPENSSL_CONF пуста
+  или указывает на несуществующий файл.
+  [!] Есть предупреждения; если сервер всё равно падает с no OPENSSL_Applink - пересоберите его.
+  OK: библиотеки для запуска на месте.
+ [OK] Библиотеки на месте.
+
+ [*] Проверка и применение SQL-патчей LEGIONFORGE...
+  [*] applying updates\characters\master\2026_01_01_02_character_instance_join_fix.sql -> characters...
+      erroneous_character_instance_columns_remaining
+      0
+  [OK] updates\characters\master\2026_01_01_02_character_instance_join_fix.sql
+  [*] applying 04_fix_instance_data.sql -> characters...
+  [OK] 04_fix_instance_data.sql
+  [*] applying 31_remove_bots_characters.sql -> characters...
+  [OK] 31_remove_bots_characters.sql
+  [*] applying stitch\010_scenario_return_characters.sql -> characters...
+  [OK] stitch\010_scenario_return_characters.sql
+  [*] applying 31_remove_bots_world.sql -> world...
+  [OK] 31_remove_bots_world.sql
+  [*] applying 02_custom_creatures.sql -> world...
+      1
+      1
+  [OK] 02_custom_creatures.sql
+  [*] applying 07_legion_instance_template.sql -> world...
+  [OK] 07_legion_instance_template.sql
+  [*] applying 08_all_instance_template.sql -> world...
+  [OK] 08_all_instance_template.sql
+  [*] applying 09_lfg_dungeon_entrances.sql -> world...
+  [OK] 09_lfg_dungeon_entrances.sql
+  [*] applying 10_legionforge_realm.sql -> auth...
+  [OK] 10_legionforge_realm.sql
+  [*] applying 13_warlock_starter_pet.sql -> world...
+  [OK] 13_warlock_starter_pet.sql
+  [*] applying 15_young_and_vicious.sql -> world...
+  [OK] 15_young_and_vicious.sql
+  [*] applying 18_quest_item_target.sql -> world...
+  [OK] 18_quest_item_target.sql
+  [*] applying 19_quest_generic_phase.sql -> world...
+  [OK] 19_quest_generic_phase.sql
+  [*] applying 20_imp_display.sql -> world...
+  [OK] 20_imp_display.sql
+  [*] applying 20_imp_display_characters.sql -> characters...
+  [OK] 20_imp_display_characters.sql
+  [*] applying 22_they_sent_assassins.sql -> world...
+  [OK] 22_they_sent_assassins.sql
+  [*] applying 23_kill_target_questgivers.sql -> world...
+  [OK] 23_kill_target_questgivers.sql
+  [*] applying 24_neutral_kill_targets.sql -> world...
+  [OK] 24_neutral_kill_targets.sql
+  [*] applying 25_clear_promo_mail_world.sql -> world...
+  [OK] 25_clear_promo_mail_world.sql
+  [*] applying 25_clear_promo_mail_characters.sql -> characters...
+  [OK] 25_clear_promo_mail_characters.sql
+  [*] applying 26_welcome_sender.sql -> world...
+  [OK] 26_welcome_sender.sql
+  [*] applying 27_worgen_start.sql -> world...
+  [OK] 27_worgen_start.sql
+  [*] applying 28_fel_imp_display.sql -> world...
+  [OK] 28_fel_imp_display.sql
+  [*] applying 48_legion_allied_races.sql -> world...
+  [OK] 48_legion_allied_races.sql
+  [*] applying 49_legion_allied_races_hotbar.sql -> world...
+  [OK] 49_legion_allied_races_hotbar.sql
+  [*] applying 52_custom_races_31_44.sql -> world...
+      raceId    raceName        donorRace       team    createInfoRows  levelStatRows   startItemRows   actionBarRows  unlockRows
+      31        Custom race 31 (donor: Human)   1       ALLIANCE        9       990     0       27      1
+      32        Custom race 32 (donor: Orc)     2       HORDE   8       880     0       26      1
+      33        Custom race 33 (donor: Night Elf)       4       ALLIANCE        9       990     0       38      1
+      34        Custom race 34 (donor: Dwarf)   3       ALLIANCE        10      1100    0       30      1
+      35        Custom race 35 (donor: Undead)  5       HORDE   8       880     0       25      1
+      36        Custom race 36 (donor: Tauren)  6       HORDE   8       880     0       32      1
+      37        Custom race 37 (donor: Gnome)   7       ALLIANCE        8       880     0       26      1
+      38        Custom race 38 (donor: Troll)   8       HORDE   10      1100    0       35      1
+      39        Custom race 39 (donor: Blood Elf)       10      HORDE   10      1100    0       34      1
+      40        Custom race 40 (donor: Draenei) 11      ALLIANCE        8       880     0       32      1
+      41        Custom race 41 (donor: Worgen)  22      ALLIANCE        8       880     0       24      1
+      42        Custom race 42 (donor: Goblin)  9       HORDE   8       880     0       35      1
+      43        Custom race 43 (donor: Pandaren Neutral)        24      NEUTRAL 7       770     0       29      1
+      44        Custom race 44 (donor: Nightborne)      27      ALLIANCE        7       770     7       20      1
+  [OK] 52_custom_races_31_44.sql
+  [*] applying generated_p05_item_targets.sql -> world...
+  [OK] generated_p05_item_targets.sql
+ [OK] SQL-патчи применены.
+  [OK] worldserver.conf : MySQLExecutable = D:/legionforge/tools/mysql/server/bin/mysql.exe
+  [OK] bnetserver.conf : MySQLExecutable = D:/legionforge/tools/mysql/server/bin/mysql.exe
+  == LEGIONFORGE: диагностика OpenSSL / OPENSSL_Applink ==
+  Каталог сервера: D:\legionforge\server
+
+  --- bnetserver.exe ---
+  [OK] экспорт OPENSSL_Applink присутствует - фикс скомпилирован в exe.
+
+  --- worldserver.exe ---
+  [OK] экспорт OPENSSL_Applink присутствует - фикс скомпилирован в exe.
+
+  --- DLL OpenSSL рядом с сервером ---
+  [OK] libcrypto-3-x64.dll  (версия 3.5.9, 6 996 480 байт)
+  [OK] libssl-3-x64.dll  (версия 3.5.9, 1 294 336 байт)
+
+  --- Поиск посторонних OpenSSL DLL в PATH ---
+  [!] PATH содержит libcrypto-4-x64.dll  ->  C:\Program Files\FireDaemon OpenSSL 4\bin\
+  [!] PATH содержит libssl-4-x64.dll  ->  C:\Program Files\FireDaemon OpenSSL 4\bin\
+  [!] PATH содержит libcrypto-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto-3-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libcrypto.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-1_1-x64.dll  ->  C:\Windows\system32
+  [!] PATH содержит libssl-3-x64.dll  ->  C:\Windows\system32
+        Windows грузит DLL из каталога exe ПЕРЕД PATH, поэтому локальные
+        файлы обычно побеждают. Но если локальных DLL нет (статическая
+        сборка), загрузится посторонняя - от Git, PostgreSQL или Steam.
+
+  --- Переменная OPENSSL_CONF ---
+  [OK] OPENSSL_CONF задана и файл существует: D:\legionforge\tools\openssl.cnf
+
+  Временное смягчение БЕЗ пересборки (не заменяет фикс в Main.cpp):
+      set "OPENSSL_CONF=D:\legionforge\tools\openssl.cnf"
+  play.bat подставляет этот путь автоматически, если OPENSSL_CONF пуста
+  или указывает на несуществующий файл.
+
+  [!] Есть предупреждения; если сервер всё равно падает с no OPENSSL_Applink - пересоберите его.
+
+ [*] Запуск bnetserver...
+ [OK] bnetserver запущен и слушает порт 1119.
+ [*] Запуск worldserver, загрузка мира занимает 1-3 минуты...
+ [ВНИМАНИЕ] worldserver не подтвердил готовность.
+     Проверьте журнал: D:\legionforge\server\Server.log
+Для продолжения нажмите любую клавишу . . .
+
+
+
